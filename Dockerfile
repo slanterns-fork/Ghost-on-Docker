@@ -13,7 +13,7 @@ RUN apt install nodejs -y
 
 #install ghost
 WORKDIR /var/www/ghost
-RUN apt install wget unzip -y
+RUN apt install wget unzip sqlite3 -y
 RUN wget https://ghost.org/zip/ghost-latest.zip \
     && unzip -uo ghost-latest.zip -d /var/www/ghost \
     && rm -f ghost-latest.zip
