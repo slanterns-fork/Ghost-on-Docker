@@ -7,13 +7,15 @@ RUN apt update \
     && apt upgrade -y
 
 #install node.js 6.x
-RUN apt install curl sudo -y
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -        #From https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-RUN apt install nodejs -y
+RUN apt install curl sudo wget -y
+#RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -        #From https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+#try using nvm
+RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | bash  #upgradable
+RUN nvm install v6.3.1  #upgradable
 
 #install ghost
 WORKDIR /var/www/ghost
-RUN apt install wget unzip sqlite3 -y
+RUN apt install unzip sqlite3 -y
 RUN wget https://ghost.org/zip/ghost-latest.zip \
     && unzip -uo ghost-latest.zip -d /var/www/ghost \
     && rm -f ghost-latest.zip
