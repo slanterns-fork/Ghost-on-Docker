@@ -11,7 +11,7 @@ RUN apt install curl sudo wget -y
 #RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -        #From https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 #try using nvm
 RUN wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash  #upgradable
-RUN nvm install v6.3.1  #upgradable
+RUN nvm ls-remote && nvm install v6.3.1 && nvm use v6.3.1 #upgradable
 
 #install ghost
 WORKDIR /var/www/ghost
